@@ -35,6 +35,7 @@ if(session.getAttribute("tadmin") != null){
             crossorigin="anonymous"
         ></script>
         <link rel="stylesheet" href="./Style/stylemainpage.css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
     <body class="overflow-hidden">
@@ -149,7 +150,7 @@ if(session.getAttribute("tadmin") != null){
                 >
                     <h2 class="fs-1"><b>Registro de Trabajadores</b></h2>
                     <hr />
-                    <a href="./Admin/agregart.jsp" class="btn btn-success mb-3 px-3 p-2 fs-6"
+                    <a href="agregart.jsp" class="btn btn-success mb-3 px-3 p-2 fs-6"
                         >Agregar Trabajador <i class="fa fa-plus"></i
                     ></a>
                     <br />
@@ -164,8 +165,7 @@ if(session.getAttribute("tadmin") != null){
             			
             		PreparedStatement ps;
             		ResultSet rs;
-            		ps = con.prepareStatement("select * from trabajadores where admin = ?");
-            		ps.setInt(1, 0);
+            		ps = con.prepareStatement("select * from trabajadores");
             		rs = ps.executeQuery();
                     %>
                     <table class="table">
@@ -176,6 +176,7 @@ if(session.getAttribute("tadmin") != null){
 					      <th scope="col">APELLIDO</th>
 					      <th scope="col">VALORACIÓN</th>
 					      <th scope="col">CORREO</th>
+					      <th scope="col">ADMIN</th>
 					      <th scope="col">ACCIONES</th>
 					    </tr>
 					  </thead>
@@ -187,9 +188,15 @@ if(session.getAttribute("tadmin") != null){
 					      <td><%= rs.getString("lastname")%></td>
 					      <td><%= rs.getInt("valoracion")%></td>
 					      <td><%= rs.getString("email")%></td>
+					      <%if(rs.getInt("admin") == 0){%>
+					      	<td>No</td>					    	  
+					      <%}else if(rs.getInt("admin") == 1) {%>
+					      	<td>Sí</td>					    	 
+					      <%} %>	
+					      
 					      <td>
-					      	<a class="btn btn-warning">Editar</a>
-					      	<a class="btn btn-danger">Eliminar</a>
+					      	<a href="editart.jsp?code=<%= rs.getString("tcode")%>" class="btn btn-warning">Editar</a>
+					      	<a data-tcode="<%= rs.getString("tcode")%>" class="btn btn-danger btn-delete">Eliminar</a>
 					      </td>
 					    </tr>
 					    <%} %>
@@ -210,6 +217,27 @@ if(session.getAttribute("tadmin") != null){
             integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
             crossorigin="anonymous"
         ></script>
+        <script>
+        	const btnDelete = document.getElementsByClassName("btn-delete");
+        	for(let btn of btnDelete) {
+        		btn.addEventListener("click", ()=>{
+            		Swal.fire({
+            			  title: '¿Estás seguro?',
+            			  text: "No se puede revertir esta acción.",
+            			  icon: 'warning',
+            			  showCancelButton: true,
+            			  confirmButtonColor: '#3085d6',
+            			  cancelButtonColor: '#d33',
+            			  confirmButtonText: 'Eliminar'
+            			}).then((result) => {
+            			  if (result.isConfirmed) {
+            				  let codeT = btn.dataset.tcode;
+            				  window.location.href = "eliminart.jsp?code=" + codeT; 
+            			  }
+            			})
+            	});	
+        	}
+        </script>
     </body>
 </html>
     

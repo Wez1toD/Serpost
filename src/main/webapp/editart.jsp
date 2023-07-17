@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
+<%@page import="java.sql.*" %>
 <%
 if(session.getAttribute("tcode") == null){
 	response.sendRedirect("index.jsp");
@@ -12,10 +12,11 @@ if(session.getAttribute("tadmin") != null){
 	}
 }
 %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Serpost | Administrador</title>
+        <title>Serpost | Modificar Trabajador</title>
 
         <meta charset="utf-8" />
         <meta
@@ -38,11 +39,29 @@ if(session.getAttribute("tadmin") != null){
     </head>
 
     <body class="overflow-hidden px-3">
+    <%
+                    Connection con;
+            		String url = "jdbc:mysql://localhost:3306/serpost";
+            		String user = "root";
+            		String clave = "123456";
+            		String Driver = "com.mysql.jdbc.Driver";
+            		Class.forName(Driver);
+            		con = DriverManager.getConnection(url, user, clave);
+            			
+            		PreparedStatement ps;
+            		ResultSet rs;
+            		String code = request.getParameter("code"); 
+            		ps = con.prepareStatement("select * from trabajadores where tcode = ?");
+            		ps.setString(1, code);
+            		rs = ps.executeQuery();
+            		while(rs.next()){
+
+                    %>
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <main class="vh-100 overflow-auto mt-3 pb-5">
                     <h2 class="fs-1">
-                        <b>Agregar Registro de Trabajador</b>
+                        <b>Modificar Registro de Trabajador</b>
                     </h2>
                     <hr />
                     <div class="row g-2">
@@ -55,17 +74,8 @@ if(session.getAttribute("tadmin") != null){
                                 id="inputCode"
                                 name="txtCode"
                                 class="form-control mb-3"
-                                required
-                            />
-                            <label for="inputPassword" class="form-label"
-                                >Contraseña</label
-                            >
-                            <input
-                                type="password"
-                                id="inputPassword"
-                                name="txtPassword"
-                                class="form-control mb-3"
-                                required
+                                readonly
+                                value="<%=rs.getString("tcode") %>"
                             />
                             <label for="inputFirstname" class="form-label"
                                 >Primer Nombre</label
@@ -75,7 +85,7 @@ if(session.getAttribute("tadmin") != null){
                                 id="inputFirstname"
                                 name="txtFirstname"
                                 class="form-control mb-3"
-                                required
+                                value="<%=rs.getString("firstname") %>"
                             />
                             <label for="inputLastname" class="form-label"
                                 >Primer Apellido</label
@@ -85,7 +95,7 @@ if(session.getAttribute("tadmin") != null){
                                 id="inputLastname"
                                 name="txtLastname"
                                 class="form-control mb-3"
-                                required
+                                value="<%=rs.getString("lastname") %>"
                             />
                             <label for="inputValoracion" class="form-label"
                                 >Valoración</label
@@ -95,7 +105,8 @@ if(session.getAttribute("tadmin") != null){
                                 id="inputValoracion"
                                 name="txtValoracion"
                                 class="form-control mb-3"
-                                required
+                                 min="1" max="5"
+                                value="<%= rs.getInt("valoracion") %>"
                             />
                             <label for="inputEmail" class="form-label"
                                 >E-mail</label
@@ -105,7 +116,7 @@ if(session.getAttribute("tadmin") != null){
                                 id="inputEmail"
                                 name="txtEmail"
                                 class="form-control mb-3"
-                                required
+                                value="<%= rs.getString("email") %>"
                             />
                             <a
                                 href="adminindex.jsp"
@@ -113,7 +124,7 @@ if(session.getAttribute("tadmin") != null){
                                 >Regresar <i class="fa fa-backward"></i
                             ></a>
                             <button class="btn btn-success fs-5 px-4 mx-4 mt-3">
-                                Agregar <i class="fa fa-plus"></i>
+                                Modificar <i class="fa fa-plus"></i>
                             </button>
                         </form>
                         <div
@@ -126,6 +137,7 @@ if(session.getAttribute("tadmin") != null){
                 </main>
             </div>
         </div>
+        <%} %>
         <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -140,32 +152,25 @@ if(session.getAttribute("tadmin") != null){
         ></script>
     </body>
 </html>
-
-<%
-	Connection con;
-	String url = "jdbc:mysql://localhost:3306/serpost";
-	String user = "root";
-	String clave = "123456";
-	String Driver = "com.mysql.jdbc.Driver";
-	Class.forName(Driver);
-	con = DriverManager.getConnection(url, user, clave);
-	PreparedStatement ps;
-	String code, password, firstname, lastname, valoracion, email;
-	code = request.getParameter("txtCode");
-	password = request.getParameter("txtPassword");
+<%	
+	String firstname, lastname, email, valoracion;
 	firstname = request.getParameter("txtFirstname");
 	lastname = request.getParameter("txtLastname");
-	valoracion = request.getParameter("txtValoracion");
 	email = request.getParameter("txtEmail");
-	if(code != null && password != null && firstname != null && lastname != null && valoracion != null && email != null){
-		ps = con.prepareStatement("insert into trabajadores values(?,?,?,?,?,?,?)");
-		ps.setString(1, code);
-		ps.setString(2, password);
-		ps.setString(3, firstname);
-		ps.setString(4, lastname);
-		ps.setInt(5, Integer.parseInt(valoracion));
-		ps.setInt(6, 0);
-		ps.setString(7, email);
+	valoracion = request.getParameter("txtValoracion");
+	if(firstname != null && lastname != null && email != null && valoracion != null){
+		ps = con.prepareStatement("update trabajadores set firstname=?, lastname=?,email=?,valoracion=? where tcode=?");
+		ps.setString(1,firstname);
+		ps.setString(2,lastname);
+		ps.setString(3,email);
+		int valInt = Integer.parseInt(valoracion);
+		if(valInt > 5){
+			valInt = 5;
+			ps.setInt(4, valInt);
+		}else{
+			ps.setInt(4, valInt);
+		}
+		ps.setString(5, code);
 		ps.executeUpdate();
 		response.sendRedirect("adminindex.jsp");
 	}
