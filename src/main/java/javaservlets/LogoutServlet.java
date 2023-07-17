@@ -21,7 +21,6 @@ public class LogoutServlet extends HttpServlet {
 		session.removeAttribute("tcode");
 		session.removeAttribute("tname");
 		session.removeAttribute("tlast");
-		System.out.println(session.getAttribute("tcode"));
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	}

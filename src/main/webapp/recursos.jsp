@@ -9,7 +9,7 @@ if(session.getAttribute("tcode") == null){
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Serpost | Inicio</title>
+        <title>Serpost | Recursos</title>
 
         <meta charset="utf-8" />
         <meta
@@ -131,7 +131,7 @@ if(session.getAttribute("tcode") == null){
                         <div class="text-white text-center d-none d-md-inline">
                             <p class="fs-5 mb-1">Valoración:</p>
                             <div>
-                               	<%
+                                <%
                                 if(session.getAttribute("tval") != null){
                                 	int val = (Integer) session.getAttribute("tval");
                                		for(int i = 0; i < val; i++){
@@ -193,118 +193,189 @@ if(session.getAttribute("tcode") == null){
                 <main
                     class="col-9 col-sm-10 col-md-9 col-xl-10 vh-100 overflow-auto mt-2 pb-5"
                 >
-                    <h2 class="mt-3 fs-1">¿Quienes somos?</h2>
+                    <h2>
+                        <a
+                            class="fs-1 btn text-dark p-0"
+                            style="font-weight: bold"
+                            data-bs-toggle="collapse"
+                            href="#contentId"
+                            aria-expanded="true"
+                            aria-controls="contentId"
+                        >
+                            Recursos Visuales
+                            <i class="fa fa-chevron-down"></i>
+                        </a>
+                    </h2>
+                    <div class="collapse show" id="contentId">
+                        <hr />
+                        <div
+                            class="row justify-content-center align-items-center g-3 mb-3"
+                        >
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="row justify-content-center align-items-center g-3 mb-3"
+                        >
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="ratio ratio-16x9">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/vlDzYIIOYmM"
+                                        title="YouTube video"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <hr />
-                    <p>
-                        Servicios Postales del Perú S.A. – SERPOST S.A. es una
-                        empresa pública de derecho privado, adscrita al Sector
-                        Transportes y Comunicaciones, organizada de acuerdo con
-                        la Ley de Actividad Empresarial del Estado y a la Ley
-                        General de Sociedades, la cual se administra por la
-                        normatividad que emana del Fondo Nacional de
-                        Financiamiento de la Actividad Empresarial del Estado
-                        (FONAFE), siendo su actividad principal la prestación de
-                        los servicios postales -en todas sus modalidades- en el
-                        ámbito nacional e internacional. <br />
-                        Mediante el Decreto Legislativo N° 685 de fecha 5 de
-                        noviembre de 1991, se le otorgó a SERPOST la concesión
-                        del servicio postal, sin exclusividad y con carácter de
-                        administración postal del Estado, para el cumplimiento
-                        de los acuerdos y convenios internacionales.
-                        <br />
-                        En SERPOST somos conscientes del rol que nos corresponde
-                        como operador postal designado: Apoyar los planes de
-                        desarrollo nacional, en especial aquellos referidos a
-                        promover las exportaciones no tradicionales y el
-                        desarrollo de las micro y pequeñas empresas.
-                    </p>
                     <br />
-                    <h2 class="fs-1 text-center">Visión</h2>
-                    <p class="text-center px-5">
-                        “Ser la Empresa líder en la región, dentro del mercado
-                        postal; gestionando envíos físicos y digitales,
-                        anticipándonos a las necesidades de nuestros clientes,
-                        respaldados en innovaciones tecnológicas, con
-                        responsabilidad, calidad y sostenibilidad”.
-                    </p>
-                    <br />
-                    <h2 class="fs-1 text-center">Misión</h2>
-                    <p class="text-center px-5">
-                        “Contribuir al desarrollo del país brindando a nuestros
-                        clientes servicios postales oportunos y de calidad;
-                        asegurando el máximo acercamiento a través de la mayor
-                        red de atención y entrega”.
-                    </p>
-                    <hr />
-                    <br />
-                    <h2 class="fs-1">Atención al Cliente</h2>
-                    <p>
-                        En nuestra empresa de servicios postales y envío de
-                        paquetes, entendemos que nuestros clientes son nuestra
-                        prioridad número uno. Por eso, nos enorgullece ofrecer
-                        un servicio de atención al cliente excepcional que busca
-                        superar las expectativas en cada interacción.
-                        <br />
-                        La atención al cliente desempeña un papel fundamental en
-                        nuestra empresa, ya que es el enlace directo entre
-                        nosotros y nuestros valiosos clientes. Es a través de
-                        nuestros profesionales de atención al cliente que
-                        tenemos la oportunidad de brindar una experiencia
-                        positiva y memorable. <br />
-                        La importancia de la atención al cliente radica en
-                        varios aspectos clave:
-                    </p>
-
-                    <ol>
+                    <h3>Artículos y blogs:</h3>
+                    <ul>
                         <li>
-                            Satisfacción del cliente: Nos esforzamos por
-                            garantizar la satisfacción de cada uno de nuestros
-                            clientes. A través de un trato amable, atento y
-                            respetuoso, buscamos no solo cumplir con sus
-                            expectativas, sino superarlas. Queremos que cada
-                            interacción con nosotros sea una experiencia
-                            gratificante.
+                            <a
+                                href="https://rockcontent.com/es/blog/customer-experience/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >RockContent Blog</a
+                            >
                         </li>
                         <li>
-                            Retención de clientes: Valoramos la confianza que
-                            nuestros clientes depositan en nosotros al elegir
-                            nuestros servicios. Sabemos que la calidad de
-                            nuestra atención al cliente juega un papel
-                            fundamental en la retención de clientes. Nos
-                            esforzamos por construir relaciones sólidas y
-                            duraderas, para que nuestros clientes continúen
-                            eligiéndonos una y otra vez.
+                            <a
+                                href="https://cxblog.com/es/categoria/customer-experience-es/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Blog de Experiencia al Cliente (CX)</a
+                            >
                         </li>
                         <li>
-                            Generación de referencias y recomendaciones: Creemos
-                            en el poder de las recomendaciones de boca en boca.
-                            Cuando nuestros clientes están satisfechos con
-                            nuestros servicios, son más propensos a hablar
-                            positivamente sobre nosotros con sus amigos,
-                            familiares y colegas. Estas referencias y
-                            recomendaciones son testimonios poderosos que nos
-                            ayudan a expandir nuestra base de clientes.
+                            <a
+                                href="https://botmaker.com/es/posteos/consejos-procesos-atencion-cliente/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Blog de Botmaker: procesos de atención al
+                                cliente</a
+                            >
                         </li>
                         <li>
-                            Resolución de problemas: Reconocemos que pueden
-                            surgir desafíos y dificultades en el proceso de
-                            envío y entrega de paquetes. Nuestro equipo de
-                            atención al cliente está capacitado para abordar
-                            cualquier problema de manera rápida y eficiente. Nos
-                            esforzamos por convertir situaciones difíciles en
-                            oportunidades para demostrar nuestro compromiso con
-                            la satisfacción del cliente.
+                            <a
+                                href="https://www.wowcx.com/tag/experiencia-de-cliente/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >WoW! Customer Experience</a
+                            >
                         </li>
                         <li>
-                            Mejora continua: Valoramos los comentarios y la
-                            retroalimentación de nuestros clientes. A través de
-                            nuestras interacciones, recopilamos información
-                            valiosa que nos ayuda a identificar áreas de mejora.
-                            Estamos comprometidos con la mejora continua de
-                            nuestros servicios, y la voz de nuestros clientes
-                            desempeña un papel fundamental en ese proceso.
+                            <a
+                                href="https://blog.comparasoftware.com/servicio-cliente/atencion-al-cliente/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Blog ComparaSoftware: Atención al cliente</a
+                            >
                         </li>
-                    </ol>
+                    </ul>
+                    <h3>Podcasts y conferencias:</h3>
+                    <ul>
+                        <li>
+                            <strong>"Atención al Cliente" por Neotel:</strong>
+                            Este podcast se centra en la atención al cliente y
+                            ofrece consejos, estrategias y casos de éxito para
+                            mejorar la experiencia del cliente. Cubre temas como
+                            la comunicación efectiva, la resolución de problemas
+                            y la fidelización de clientes.
+                        </li>
+                        <li>
+                            <strong
+                                >"Clientes por Siempre" por Alex Kei:</strong
+                            >
+                            En este podcast, Alex Kei comparte consejos
+                            prácticos y estrategias para brindar un excelente
+                            servicio al cliente y construir relaciones duraderas
+                            con los clientes. Explora temas como la empatía, la
+                            gestión de quejas y la personalización del servicio.
+                        </li>
+                        <li>
+                            <strong
+                                >"Experiencia del Cliente" por José Luis
+                                Orihuela:</strong
+                            >
+                            Este podcast analiza la experiencia del cliente
+                            desde una perspectiva digital. Explora cómo la
+                            tecnología y las nuevas tendencias están cambiando
+                            la forma en que las empresas interactúan con los
+                            clientes.
+                        </li>
+                    </ul>
+                    <h3>Herramientas de productividad:</h3>
+                    <ul>
+                        <li>
+                            <strong>Trello:</strong> Trello es una herramienta
+                            de gestión de tareas y proyectos que permite
+                            organizar y asignar tareas de manera eficiente. Es
+                            útil para equipos de atención al cliente para
+                            realizar un seguimiento de las consultas y mantener
+                            un flujo de trabajo organizado.
+                        </li>
+                        <li>
+                            <strong>Slack:</strong> Slack es una plataforma de
+                            comunicación en equipo que facilita la colaboración
+                            y la comunicación entre los miembros del equipo de
+                            atención al cliente. Permite crear canales de chat,
+                            compartir archivos y realizar llamadas de voz y
+                            video.
+                        </li>
+                        <li>
+                            <strong>Asana:</strong> Asana es una herramienta de
+                            gestión de proyectos que ayuda a los equipos a
+                            organizar, asignar y realizar un seguimiento de las
+                            tareas de manera efectiva. Puede ser útil para
+                            gestionar proyectos y tareas relacionados con la
+                            atención al cliente.
+                        </li>
+                    </ul>
                 </main>
             </div>
         </div>

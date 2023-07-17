@@ -31,7 +31,9 @@ public class LoginServlet extends HttpServlet {
 		try {
 			response.setContentType("text/html");
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/serpost", "root", "Thedaarickrandom203");
+			String user = "root";
+			String clave = "123456";
+			Connection con =  DriverManager.getConnection("jdbc:mysql://localhost:3306/serpost", user, clave);
 			
 			PreparedStatement ps = con.prepareStatement("select * from trabajadores where tcode=? and password=?");
 			ps.setString(1, tcode);
@@ -42,7 +44,13 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("tcode", rs.getString("tcode").toUpperCase());
 				session.setAttribute("tname", rs.getString("firstname"));
 				session.setAttribute("tlast", rs.getString("lastname"));
-				rd = request.getRequestDispatcher("mainpage.jsp");
+				session.setAttribute("tadmin", rs.getInt("admin"));
+				session.setAttribute("tval", rs.getInt("valoracion"));
+				if(rs.getInt("admin") == 1) {
+					rd = request.getRequestDispatcher("adminindex.jsp");
+				}else if(rs.getInt("admin") == 0) {					
+					rd = request.getRequestDispatcher("mainpage.jsp");
+				}
 			}
 			else {
 				request.setAttribute("status", "failed");
