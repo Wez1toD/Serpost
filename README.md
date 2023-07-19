@@ -1,6 +1,6 @@
 # Serpost Customer Service Development Portal
 
-![Serpost Customer Service Development Portal]([https://example.com/ruta/imagen.png](https://www.qempo.com.pe/blog/wp-content/uploads/2019/10/serpost-peru.jpg))
+![Serpost Customer Service Development Portal](https://www.qempo.com.pe/blog/wp-content/uploads/2019/10/serpost-peru.jpg)
 
 ## Descripción del Proyecto
 
