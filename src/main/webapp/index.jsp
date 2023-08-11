@@ -12,6 +12,7 @@
         <title>SERPOST</title>
     </head>
     <body>
+    <!-- Hecho por Wilver Emanuel Zuñiga Arca -->
         <main>
         	<input type="hidden" id="status" value="<%= request.getAttribute("status") %>">
             <div class="container">
